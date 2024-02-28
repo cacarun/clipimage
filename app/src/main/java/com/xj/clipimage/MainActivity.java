@@ -298,13 +298,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        ClipImageActivity.goToClipActivity(this, uri);
-        ClipImageActivity.goToClipActivity(this, uri, new ActivityResultHelper.Callback() {
-            @Override
-            public void onActivityResult(int resultCode, Intent data) {
+        ClipImageActivity.goToClipActivity(this, uri, type);
 
-            }
-        });
+//        ClipImageActivity.goToClipActivity(this, uri, new ActivityResultHelper.Callback() {
+//            @Override
+//            public void onActivityResult(int resultCode, Intent data) {
+//
+//            }
+//        });
     }
 
 

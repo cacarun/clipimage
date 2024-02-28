@@ -40,25 +40,25 @@ public class ClipImageActivity extends AppCompatActivity implements View.OnClick
      * @param uri
      * @param callback
      */
-    public static void goToClipActivity(FragmentActivity activity, Uri uri,
+    public static void goToClipActivity(FragmentActivity activity, Uri uri, int clipType,
                                         ActivityResultHelper.Callback callback) {
         if (uri == null) {
             return;
         }
-        Intent intent = getClipIntent(activity, uri);
+        Intent intent = getClipIntent(activity, uri, clipType);
         ActivityResultHelper.init(activity).startActivityForResult(intent, callback);
     }
 
-    public static void goToClipActivity(FragmentActivity activity, Uri uri) {
-        Intent clipIntent = getClipIntent(activity, uri);
+    public static void goToClipActivity(FragmentActivity activity, Uri uri, int clipType) {
+        Intent clipIntent = getClipIntent(activity, uri, clipType);
         activity.startActivityForResult(clipIntent, REQ_CLIP_AVATAR);
     }
 
     @NonNull
-    public static Intent getClipIntent(FragmentActivity activity, Uri uri) {
+    public static Intent getClipIntent(FragmentActivity activity, Uri uri, int clipType) {
         Intent intent = new Intent();
         intent.setClass(activity, ClipImageActivity.class);
-        intent.putExtra(TYPE, ClipView.TYPE_PALACE);
+        intent.putExtra(TYPE, clipType);
         intent.setData(uri);
         return intent;
     }
